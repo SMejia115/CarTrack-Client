@@ -18,6 +18,8 @@ import { HomeComponent } from './components/home/home.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
+import { CarComponent } from './components/car/car.component';
+
 
 
 
@@ -30,7 +32,8 @@ import { CarsViewComponent } from './components/cars-view/cars-view.component';
     HomeComponent,
     UserRegistrationComponent,
     ClientRegistrationComponent,
-    CarsViewComponent
+    CarsViewComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,

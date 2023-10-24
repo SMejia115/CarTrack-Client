@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cars-view',
@@ -7,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./cars-view.component.css']
 })
 export class CarsViewComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router:Router) {}
 
 
   cars: any[] = [];
@@ -29,5 +30,7 @@ export class CarsViewComponent {
     );
   }
 
-
+  viewProductPage(id: number){
+    this.router.navigate([`/car/${id}`]);
+  }
 }

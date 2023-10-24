@@ -12,7 +12,7 @@
           <!-- <p class='Home-card-description'> <b>Description: </b> {{product.description}} </p> -->
           <h3 class='Home-card-price'> <b>Model: </b>{{car.brand + ' ' + car.model + ' ' +car.year}}</h3>
 
-          <button class='Home-card-button' mat-raised-button >Registrar Venta</button>
+          <button class='Home-card-button' mat-raised-button  (click)="viewProductPage(car.carID)">Registrar Venta</button>
       </div>
 
   </div>
