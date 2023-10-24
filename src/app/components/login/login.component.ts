@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import jwt_decode from 'jwt-decode';
 
 // import { JwtHelperService } from '@auth0/angular-jwt';
@@ -34,7 +35,7 @@ export class LoginComponent{
   });
 
   //Constructor
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private localStorageService : LocalStorageService) { }
 
 
   //Función que se ejecuta al hacer click en el botón de login
@@ -46,7 +47,7 @@ export class LoginComponent{
     // const password = getPassword.value;
 
     // // Define las cabeceras de la solicitud (pueden variar según tu API)
-    
+
 
     // //Se asignan los valores de los inputs a los valores del objeto user
     // this.userData = {
@@ -64,7 +65,7 @@ export class LoginComponent{
         const decodedToken:any = jwt_decode(token);
         if (response.token){
           window.alert("Bienvenido " + decodedToken.user.firstName + " " + decodedToken.user.lastName);
-          window.localStorage.setItem("token", response.token);
+          this.localStorageService.setItem("token", response.token);
           let route = '/home';
           setTimeout(() => {
             this.router.navigate([route])
@@ -101,13 +102,13 @@ export class LoginComponent{
     //   window.alert("El usuario NO existe");
     // });
 
-    
+
 
     };
 
   }
 
-  
+
 
 
 

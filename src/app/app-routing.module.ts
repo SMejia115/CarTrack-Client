@@ -18,14 +18,14 @@ import { CombinedTokenGuard } from './guards/combinedLogin.guard';
 const routes: Routes = [
   {path : '', component : LoginComponent},
   {path : 'header', component : HeaderComponent},
-  {path : 'home', component : HomeComponent, canActivate: [TokenGuardAdmin]},
+  {path : 'home', component : HomeComponent, canActivate:[CombinedTokenGuard]},
   {path : 'user/registration', component : UserRegistrationComponent},
   {path : 'client/registration', component : ClientRegistrationComponent},
   {path: 'cars', component: CarsViewComponent},
   {path: 'car/:id', component: CarComponent}
 
-  
-  
+
+
 ];
 
 @NgModule({
