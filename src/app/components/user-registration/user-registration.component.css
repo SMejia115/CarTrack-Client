@@ -1,0 +1,19 @@
+/* Agrega estilos personalizados para el formulario */
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+mat-card {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Estilo del botón deshabilitado */
+.mat-raised-button[disabled] {
+  background-color: #ccc; /* Cambia el color de fondo cuando está deshabilitado */
+  cursor: not-allowed; /* Cambia el cursor del mouse */
+  pointer-events: none; /* Desactiva la interacción del usuario */
+}

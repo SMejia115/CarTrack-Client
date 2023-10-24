@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,8 +9,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderComponent } from './header/header.component';
-import { HttpClient } from '@angular/common/http';
+import { MatOptionModule } from '@angular/material/core';
+import { HeaderComponent } from './components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
+import { CarsViewComponent } from './components/cars-view/cars-view.component';
 
 
 
@@ -20,7 +26,11 @@ import { HttpClient } from '@angular/common/http';
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    UserRegistrationComponent,
+    ClientRegistrationComponent,
+    CarsViewComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +40,13 @@ import { HttpClient } from '@angular/common/http';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatOptionModule,
     MatButtonModule,
-    HttpClient
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [HttpClient],
+  providers: [],
   bootstrap: [AppComponent]
 
 })
