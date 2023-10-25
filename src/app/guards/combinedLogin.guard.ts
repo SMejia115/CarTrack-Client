@@ -7,7 +7,6 @@ import { TokenGuardAdminLogin } from './adminLogin.guard';
 @Injectable({
   providedIn: 'root'
 })
-
 export class CombinedTokenGuard implements CanActivate {
   constructor(private router: Router, private tokenGuard: TokenGuardSellerLogin, private tokenGuardAdmin: TokenGuardAdminLogin) {}
 
@@ -18,17 +17,17 @@ export class CombinedTokenGuard implements CanActivate {
     // Lógica para verificar si ambos TokenGuard y TokenGuardAdmin retornan falso
     const isTokenValid = this.tokenGuard.canActivate();
     const isAdminTokenValid = this.tokenGuardAdmin.canActivate();
-    console.log(isAdminTokenValid, isAdminTokenValid);
+    console.log(isAdminTokenValid, isTokenValid);
 
-    if (!isTokenValid || !isAdminTokenValid){
-      console.log(!isTokenValid || !isAdminTokenValid)
-      console.log('No se puede acceder a la ruta');
-      return isTokenValid && isAdminTokenValid;
-    }else{
+    console.log(!isTokenValid && !isAdminTokenValid);
+
+
+    if (!isTokenValid && !isAdminTokenValid){
       this.router.navigate(['']);
-      return isTokenValid && isAdminTokenValid;
+      return !isTokenValid && !isAdminTokenValid;
+
+    }else{
+      return isTokenValid || isAdminTokenValid;
     }
-
-
   }
 }

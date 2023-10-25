@@ -12,13 +12,13 @@ export class TokenGuardAdminLogin implements CanActivate {
   constructor(private router: Router, private localStorageService : LocalStorageService) { }
 
    canActivate(): boolean {
-    const token : any = decodeToken2(this.localStorageService.getItem('token'));
+    const token : any = this.localStorageService.getItem('token');
     if (token){
-      if (token.user.role === 'admin') {
+      const tokenDesencripted :any = decodeToken2(token)
+      if (tokenDesencripted.user.role === 'admin') {
         return true;
-      } 
+      }
     }
     return false;
     }
   }
-
