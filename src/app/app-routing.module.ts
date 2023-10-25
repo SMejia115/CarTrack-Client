@@ -17,13 +17,13 @@ import { BuyComponent } from './components/buy/buy.component';
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { PersonalReportsComponent } from './components/personal-reports/personal-reports.component';
-
+import { GeneralReportsComponent } from './components/general-reports/general-reports.component';
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
   {path : 'header', component : HeaderComponent},
-  {path : 'home', component : HomeComponent, canActivate: [TokenGuardAdmin]},
+  {path : 'home', component : HomeComponent, canActivate: [CombinedTokenGuard]},
   {path: 'clients', component: ClientListComponent},
   {path : 'user/registration', component : UserRegistrationComponent, canActivate: [TokenGuardAdmin]},
   {path : 'client/registration', component : ClientRegistrationComponent, canActivate: [CombinedTokenGuard]},
@@ -32,10 +32,8 @@ const routes: Routes = [
   {path: 'list', component: CarListComponent , canActivate:[TokenGuardAdmin]},
   {path: 'buy', component: BuyComponent, canActivate:[CombinedTokenGuard]},
   {path: 'admin', component: AdminHomeComponent, canActivate:[TokenGuardAdmin]},
-  {path: 'report', component: PersonalReportsComponent},
-
-  
-  
+  {path: 'general/report', component: GeneralReportsComponent, canActivate:[TokenGuardAdmin]},
+  {path: 'personal/report', component: PersonalReportsComponent, canActivate:[CombinedTokenGuard]},
 ];
 
 @NgModule({

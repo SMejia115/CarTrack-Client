@@ -27,6 +27,7 @@ import { ClientListComponent } from './components/client-list/client-list.compon
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { PersonalReportsComponent } from './components/personal-reports/personal-reports.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GeneralReportsComponent } from './components/general-reports/general-reports.component';
 
 
 
@@ -47,7 +48,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CarListComponent,
     BuyComponent,
     PersonalReportsComponent,
-    ClientListComponent
+    ClientListComponent,
+    GeneralReportsComponent
   ],
   imports: [
     BrowserModule,

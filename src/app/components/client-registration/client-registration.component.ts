@@ -48,7 +48,7 @@ export class ClientRegistrationComponent {
   onSubmit() {
     const clientData = this.clientForm.value;
     
-    if (!this.selectedFile) {
+    if (!this.selectedFile && clientData.boolReports) {
       window.alert('Por favor, seleccione un archivo PDF.');
       return;
     }
@@ -61,8 +61,14 @@ export class ClientRegistrationComponent {
       (clientResponse) => {
         console.log('Cliente registrado:', clientResponse);
         // Ahora, envía el archivo
-        this.uploadFile(fileData);
-        window.alert('Cliente registrado con éxito.');
+        if (this.selectedFile && clientData.boolReports) {
+          fileData.append('report', this.selectedFile, this.selectedFileName);
+          this.uploadFile(fileData);
+          window.alert('Cliente registrado con éxito.');
+        } else{
+          window.alert('Cliente registrado con éxito.');
+        }
+        
         let route = '/home';
           setTimeout(() => {
             this.router.navigate([route])

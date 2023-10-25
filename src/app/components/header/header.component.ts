@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit{
     this.firstName = this.tokenData ? this.tokenData.user.firstName : null;
     this.lastName = this.tokenData ? this.tokenData.user.lastName : null;
     this.role = this.tokenData ? this.tokenData.user.role : null;
-    console.log(this.tokenData);
   }
 
   logout() {
