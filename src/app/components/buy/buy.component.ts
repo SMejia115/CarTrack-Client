@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ClientService } from '../services/client.service';
+import { ClientService } from '../../services/client.service';
+import { Router } from '@angular/router';
 
 interface Car {
   brand: string;
@@ -57,7 +58,7 @@ export class BuyComponent {
   };
   
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private clientService: ClientService) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private clientService: ClientService, private router: Router) {
     this.nuevoAutoForm = this.formBuilder.group({
       brand: ['', Validators.required],
       model: ['', Validators.required],
@@ -163,6 +164,21 @@ export class BuyComponent {
         (response: any) => {
           // Maneja la respuesta del servidor, por ejemplo, muestra un mensaje de éxito
           console.log('Auto guardado exitosamente:', response);
+
+          // Ahora, envía las imágenes
+          this.uploadImagesSequentially(this.carData.licensePlate, this.uploadedFiles).then(
+            () => {
+              console.log('Imágenes cargadas exitosamente.');
+              window.alert('Auto registrado exitosamente.');
+              let route = '/home';
+              setTimeout(() => {
+                this.router.navigate([route])
+              }, 1000);
+            },
+            (error: any) => {
+              console.error('Error al cargar las imágenes:', error);
+            }
+          );
         },
         (error: any) => {
           // Maneja errores, muestra un mensaje de error, etc.
@@ -170,11 +186,43 @@ export class BuyComponent {
         }
       );
     });
+
   }
   
   getClientID() {
     // Realiza la solicitud HTTP para obtener el clientID
     console.log('Obteniendo clientID...');
     return this.clientService.obtainClientIDbyIdentificationNumber(this.nuevoAutoForm.value.previousOwner);
+  }
+
+  uploadImage(licensePlate: string, file: File): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const formData = new FormData();
+      formData.append('image', file, file.name);
+
+      const headers = new HttpHeaders();
+
+      this.http.post(`http://localhost:5000/image/add/licensePlate/${licensePlate}`, formData, { headers })
+        .subscribe(
+          () => {
+            console.log(`Imagen ${file.name} cargada exitosamente.`);
+            resolve();
+          },
+          (error: any) => {
+            console.error(`Error al cargar la imagen ${file.name}:`, error);
+            reject(error);
+          }
+        );
+    });
+  }
+
+  uploadImagesSequentially(licensePlate: string, files: File[]): Promise<void> {
+    let promise = Promise.resolve();
+
+    for (const file of files) {
+      promise = promise.then(() => this.uploadImage(licensePlate, file));
+    }
+
+    return promise;
   }
 }
