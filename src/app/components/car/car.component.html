@@ -55,7 +55,7 @@
         <h2><strong>Dirección:</strong> {{clientInfo.address}}</h2>
         <h2><strong>Teléfono:</strong> {{clientInfo.phone}}</h2>
         <h2><strong>Reportes Judiciales:</strong> {{clientInfo.boolReports}}</h2>
-        <input type="text" [(ngModel)]="finalSalePrice" placeholder="Precio final de la venta">
+        <input type="text" [(ngModel)]="totalPrice" placeholder="Precio final de la venta">
         
         <button [disabled]="clientInfo.boolReports" (click)="registerSale()">Registrar Venta</button>
         <!-- Agrega más campos según la información del cliente -->

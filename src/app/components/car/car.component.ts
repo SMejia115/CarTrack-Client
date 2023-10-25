@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CarsService } from 'src/app/services/cars.service';
 import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LocalStorageService } from 'src/app/services/local-storage.service'; // Importamos el servicio de localStorage para poder usarlo
 import jwt_decode from 'jwt-decode';
+
+
+// Definición de la estructura con la que se mandará el cuerpo de la petición
+interface Sale {
+  carID: number;
+  saleDate: Date;
+  clientID: number;
+  sellerID: number;
+  totalPrice: number;
+}
 
 @Component({
   selector: 'app-car',
@@ -19,27 +29,44 @@ export class CarComponent implements OnInit{
   selectedImage: string = '';
   clientInfo: any = null;
   clientDocument: string = '';
-  finalSalePrice: number = 0;
+  totalPrice: number = 0;
   clientNotFound: boolean = false;
   sellerToken: any = null;
   sellerID: any = null;
   decodeSellerToken: any = null;
+  fechaActual: Date;
+  fechaFormateada: string = '';
+  clientID: number = 0;
   
+  saleData : Sale = {
+    carID: 0,
+    saleDate: new Date(),
+    clientID: 0,
+    sellerID: 0,
+    totalPrice: 0
+  }
+
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json' // Ajusta esto según el tipo de contenido que espera tu servidor
+  });
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private carsService: CarsService,
-     private localStorageService: LocalStorageService ) { };
+     private localStorageService: LocalStorageService ) { this.fechaActual = new Date(); };
 
   ngOnInit(): void {
     this.obtainCar();
-    console.log(this.car);
     this.sellerToken = this.localStorageService.getItem('token'); // Obtenemos el ID del vendedor del localStorage
-    console.log("Token --> "+this.sellerToken.token);
     this.decodeSellerToken = jwt_decode(this.sellerToken); // Decodificamos el token para obtener el ID del vendedor
-    console.log(this.decodeSellerToken);
-    console.log(this.decodeSellerToken.id);
-    this.sellerID = this.decodeSellerToken.id; // Obtenemos el ID del vendedor
+    this.sellerID = this.decodeSellerToken.user.userID; // Obtenemos el ID del vendedor
+    this.fechaFormateada = this.formatDate(this.fechaActual);
   }
 
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
   obtainCar(){
     this.http.get(`http://localhost:5000/car/images/${this.carID}`).subscribe(
@@ -50,7 +77,7 @@ export class CarComponent implements OnInit{
           this.images.push(image.ImageURL); // Agregamos cada URL de imagen al array "images"
         }
         this.selectedImage = this.images[0]; // Seleccionamos la primera imagen del array
-        this.finalSalePrice = parseInt(this.car.appraisal) * 1.1;
+        this.totalPrice = parseInt(this.car.appraisal) * 1.1;
       },
       (error: any) => {
         console.error('Error obtaining cars:', error);
@@ -62,7 +89,8 @@ export class CarComponent implements OnInit{
     this.http.get(`http://localhost:5000/clients/identificationNumber/${this.clientDocument}`).subscribe(
       (response: any) => {
         this.clientInfo = response;
-        console.log('Información del cliente obtenida:', response); 
+        this.clientID = response.clientID;
+        console.log('Información del cliente obtenida:', response.clientID); 
         this.clientNotFound = false;
       },
       (error: any) => {
@@ -75,23 +103,29 @@ export class CarComponent implements OnInit{
     this.selectedImage = imageUrl;
   }
 
-  // registerSale(){
-  //   this.http.post(`http://localhost:5000/sales`, {
-  //     "carID": this.carID,
-  //     "clientID": this.clientInfo.clientID,
-  //     "salePrice": this.finalSalePrice
-  //     "sellerID": 
-  //   }).subscribe(
-  //     (response: any) => {
-  //       console.log('Venta registrada:', response);
-  //       this.router.navigate([`/home`]);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error registrando la venta:', error);
-  //     }
-  //   );}
+  registerSale(){
+    console.log(this.clientInfo.clientID);
+    console.log(this.sellerID);
+    this.saleData.carID = this.carID;
+    this.saleData.saleDate = new Date();
+    this.saleData.clientID = parseInt(this.clientInfo.clientID, 10);
+    this.saleData.sellerID = parseInt(this.sellerID, 10);
+    this.saleData.totalPrice = this.totalPrice;
+    console.log(this.saleData);
 
-  registerSale(){}
+
+    this.http.post(`http://localhost:5000/sales/add`, this.saleData, { headers: this.headers }).subscribe(
+      (response: any) => {
+        console.log('Venta registrada:', response);
+        window.alert("Venta registrada exitosamente");
+        this.router.navigate([`/home`]);
+      },
+      (error: any) => {
+        console.error('Error registrando la venta:', error);
+      }
+    );}
+
+
 
 
 

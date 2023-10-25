@@ -64,7 +64,7 @@ export class LoginComponent{
         const decodedToken:any = jwt_decode(token);
         if (response.token){
           window.alert("Bienvenido " + decodedToken.user.firstName + " " + decodedToken.user.lastName);
-          window.localStorage.setItem("token", response.token);
+          window.localStorage.setItem("token", JSON.stringify(response.token));
           let route = '/home';
           setTimeout(() => {
             this.router.navigate([route])
