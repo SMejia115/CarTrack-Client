@@ -14,6 +14,7 @@ import { TokenGuardSeller } from './guards/seller.guard';
 import { TokenGuardSellerLogin } from './guards/sellerLogin.guard';
 import { CombinedTokenGuard } from './guards/combinedLogin.guard';
 import { BuyComponent } from './components/buy/buy.component';
+import { ClientListComponent } from './components/client-list/client-list.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { PersonalReportsComponent } from './components/personal-reports/personal-reports.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path : '', component : LoginComponent},
   {path : 'header', component : HeaderComponent},
   {path : 'home', component : HomeComponent, canActivate: [TokenGuardAdmin]},
+  {path: 'clients', component: ClientListComponent},
   {path : 'user/registration', component : UserRegistrationComponent, canActivate: [TokenGuardAdmin]},
   {path : 'client/registration', component : ClientRegistrationComponent, canActivate: [CombinedTokenGuard]},
   {path: 'cars', component: CarsViewComponent, canActivate:[CombinedTokenGuard]},
