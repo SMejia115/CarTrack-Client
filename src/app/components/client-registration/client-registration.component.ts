@@ -54,7 +54,7 @@ export class ClientRegistrationComponent {
     }
 
     const fileData = new FormData();
-    fileData.append('report', this.selectedFile, this.selectedFile.name); // Agrega el archivo al FormData
+    // Agrega el archivo al FormData
 
     // Realiza una solicitud POST para guardar el cliente y el archivo
     this.http.post(this.apiUrl, clientData, { headers: this.headers }).subscribe(

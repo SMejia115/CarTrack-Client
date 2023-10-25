@@ -6,9 +6,6 @@
         <h1 (click)="navigateTo('/home')">CarTrack</h1>
     </div>
     <div class="header-right">
-        <div class="user-info">
-            <span *ngIf="firstName">{{ firstName}} {{lastName}} - {{role}}</span>
-        </div>
         <div class="logout-button" (click)="logout()" >
             <i class="material-icons">logout</i>
         </div>
