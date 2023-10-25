@@ -12,7 +12,7 @@ import { TokenGuardAdminLogin } from './guards/adminLogin.guard';
 import { TokenGuardSeller } from './guards/seller.guard';
 import { TokenGuardSellerLogin } from './guards/sellerLogin.guard';
 import { CombinedTokenGuard } from './guards/combinedLogin.guard';
-import { BuyComponent } from './components/buy/buy.component';
+import { BuyComponent } from './buy/buy.component';
 
 
 

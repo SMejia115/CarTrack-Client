@@ -83,7 +83,7 @@
     <div class="form-group">
       <mat-form-field>
         <label for="appraisal">Precio:</label>
-        <input matInput id="appraisal" name="appraisal" formControlName="appraisal">
+        <input matInput type="number" id="appraisal" name="appraisal" formControlName="appraisal">
         <mat-error *ngIf="nuevoAutoForm.get('appraisal')?.hasError('required')">La valoración es requerida.</mat-error>
         <mat-error *ngIf="nuevoAutoForm.get('appraisal')?.hasError('min')">El valor debe ser mayor que 0.</mat-error>
       </mat-form-field>

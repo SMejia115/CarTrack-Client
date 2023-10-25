@@ -19,7 +19,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
-import { BuyComponent } from './components/buy/buy.component';
+import { BuyComponent } from './buy/buy.component';
 
 
 
