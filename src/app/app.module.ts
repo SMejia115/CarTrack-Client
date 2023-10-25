@@ -25,7 +25,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { BuyComponent } from './components/buy/buy.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { PersonalReportsComponent } from './components/personal-reports/personal-reports.component';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -62,7 +62,7 @@ import { PersonalReportsComponent } from './components/personal-reports/personal
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -67,3 +67,7 @@ mat-raised-button{
   transition: background-color 0.2s ease-in-out;
   width: 100%;
 }
+
+.boton{
+  background-color: #0056b3;
+}

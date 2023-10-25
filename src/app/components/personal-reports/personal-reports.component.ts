@@ -1,6 +1,6 @@
+import { select } from 'd3-selection'; // Asegúrate de importar los módulos de D3 necesarios
+import { colorSets } from '@swimlane/ngx-charts';
 import { Component, OnInit } from '@angular/core';
-// import { Label, ChartOptions, ChartDataSets } from 'chart.js';
-// import { ChartType } from 'ng2-charts';
 
 @Component({
   selector: 'app-personal-reports',
@@ -8,6 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-reports.component.css']
 })
 export class PersonalReportsComponent{
+  single: any = [
+    {
+      name: 'Estados Unidos',
+      value: 328239523, // Población en millones
+    },
+    {
+      name: 'China',
+      value: 1444216107, // Población en millones
+    },
+    {
+      name: 'India',
+      value: 1380004385, // Población en millones
+    },
+    {
+      name: 'Brasil',
+      value: 212559417, // Población en millones
+    },
+    {
+      name: 'Rusia',
+      value: 145912025, // Población en millones
+    },
+  ];
 //   public barChartLabels: Label[] = []; 
 
 //   public barChartData: ChartDataSets[] = [
