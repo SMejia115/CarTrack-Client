@@ -100,6 +100,14 @@ export class BuyComponent {
     // al usuario que debe registrar al cliente primero
     const clientID = this.obtainClientIDbyIdentificationNumber(this.nuevoAutoForm.value.previousOwner);
 
+    // Pone los datos del formulario en un objeto
+    const carData = this.nuevoAutoForm.value;
+    carData.clientID = clientID;
+    // Crea un objeto FormData para enviar los datos del formulario
+    
+
+
+
 
   }
 }
