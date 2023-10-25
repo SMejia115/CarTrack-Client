@@ -1,20 +1,13 @@
 <header class="header">
     <div class="header-left">
-        <img src="../../../assets/cartrackLogo.png" alt="Logo Circular">
+        <img src="../../../assets/cartrackLogo.png" alt="Logo Circular" (click)="navigateTo('/home')">
     </div>
     <div class="header-center">
-        <h1>CarTrack</h1>
+        <h1 (click)="navigateTo('/home')">CarTrack</h1>
     </div>
     <div class="header-right">
-        <div class="menu-button">
-            <i class="material-icons">menu</i>
-        </div>
-        <div class="menu" id="menu">
-            <ul>
-                <li><a href="#">Opción 1</a></li>
-                <li><a href="#">Opción 2</a></li>
-                <li><a href="#">Opción 3</a></li>
-            </ul>
+        <div class="logout-button" (click)="logout()" >
+            <i class="material-icons">logout</i>
         </div>
     </div>
 </header>

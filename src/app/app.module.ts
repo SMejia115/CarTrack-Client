@@ -24,6 +24,7 @@ import { CarComponent } from './components/car/car.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { BuyComponent } from './components/buy/buy.component';
 import { ClientListComponent } from './components/client-list/client-list.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 
@@ -39,6 +40,8 @@ import { ClientListComponent } from './components/client-list/client-list.compon
     ClientRegistrationComponent,
     CarsViewComponent,
     CarComponent,
+    BuyComponent,
+    AdminHomeComponent,
     CarListComponent,
     BuyComponent,
     ClientListComponent
