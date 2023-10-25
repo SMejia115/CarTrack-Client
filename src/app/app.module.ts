@@ -22,6 +22,7 @@ import { ClientRegistrationComponent } from './components/client-registration/cl
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { BuyComponent } from './components/buy/buy.component';
 
 
 
@@ -37,7 +38,8 @@ import { CarListComponent } from './components/car-list/car-list.component';
     ClientRegistrationComponent,
     CarsViewComponent,
     CarComponent,
-    CarListComponent
+    CarListComponent,
+    BuyComponent
   ],
   imports: [
     BrowserModule,
