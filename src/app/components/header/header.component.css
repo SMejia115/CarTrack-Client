@@ -20,6 +20,7 @@
 .header-center h1 {
   font-size: 50px;
   margin: 0;
+  user-select: none;
 }
 
 /* Estilos para la sección derecha (menú desplegable) */
