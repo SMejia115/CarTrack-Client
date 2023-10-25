@@ -14,6 +14,7 @@ import { TokenGuardSeller } from './guards/seller.guard';
 import { TokenGuardSellerLogin } from './guards/sellerLogin.guard';
 import { CombinedTokenGuard } from './guards/combinedLogin.guard';
 import { BuyComponent } from './components/buy/buy.component';
+import { ClientListComponent } from './components/client-list/client-list.component';
 
 
 
@@ -25,9 +26,9 @@ const routes: Routes = [
   {path : 'client/registration', component : ClientRegistrationComponent},
   {path: 'cars', component: CarsViewComponent},
   {path: 'car/:id', component: CarComponent},
-  {path: 'car/list', component: CarListComponent},
+  {path: 'list', component: CarListComponent},
   {path: 'buy', component: BuyComponent, canActivate:[CombinedTokenGuard]},
-
+  {path: 'clients', component: ClientListComponent},
   
   
 ];
