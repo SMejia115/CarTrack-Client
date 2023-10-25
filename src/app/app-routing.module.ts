@@ -7,6 +7,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
 import { TokenGuardAdminLogin } from './guards/adminLogin.guard';
 import { TokenGuardSeller } from './guards/seller.guard';
@@ -19,11 +20,12 @@ import { BuyComponent } from './components/buy/buy.component';
 const routes: Routes = [
   {path : '', component : LoginComponent},
   {path : 'header', component : HeaderComponent},
-  {path : 'home', component : HomeComponent, canActivate:[CombinedTokenGuard]},
-  {path : 'user/registration', component : UserRegistrationComponent, canActivate:[TokenGuardAdmin]},
-  {path : 'client/registration', component : ClientRegistrationComponent, canActivate:[CombinedTokenGuard]},
-  {path: 'cars', component: CarsViewComponent, canActivate:[CombinedTokenGuard]},
-  {path: 'car/:id', component: CarComponent, canActivate:[CombinedTokenGuard]},
+  {path : 'home', component : HomeComponent, canActivate: [TokenGuardAdmin]},
+  {path : 'user/registration', component : UserRegistrationComponent},
+  {path : 'client/registration', component : ClientRegistrationComponent},
+  {path: 'cars', component: CarsViewComponent},
+  {path: 'car/:id', component: CarComponent},
+  {path: 'car/list', component: CarListComponent},
   {path: 'buy', component: BuyComponent, canActivate:[CombinedTokenGuard]},
 
   

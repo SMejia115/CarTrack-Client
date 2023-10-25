@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +21,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 import { BuyComponent } from './components/buy/buy.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
@@ -37,7 +40,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     CarsViewComponent,
     CarComponent,
     BuyComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    CarListComponent,
+    BuyComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     MatButtonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
