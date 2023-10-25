@@ -22,10 +22,12 @@ export class HomeComponent {
     return this.tokenDesencripted().user.role === 'admin';
   }
 
+
  constructor(private router: Router, private localStorageService: LocalStorageService  ) { }
 
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
+  
 
 }

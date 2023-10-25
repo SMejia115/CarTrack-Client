@@ -20,6 +20,7 @@ import { ClientRegistrationComponent } from './components/client-registration/cl
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
 import { BuyComponent } from './components/buy/buy.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 
@@ -35,7 +36,8 @@ import { BuyComponent } from './components/buy/buy.component';
     ClientRegistrationComponent,
     CarsViewComponent,
     CarComponent,
-    BuyComponent
+    BuyComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
