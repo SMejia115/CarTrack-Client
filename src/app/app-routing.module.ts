@@ -7,6 +7,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
 import { CarsViewComponent } from './components/cars-view/cars-view.component';
 import { CarComponent } from './components/car/car.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 import { TokenGuardAdmin } from './guards/admin.guard';
 import { TokenGuardAdminLogin } from './guards/adminLogin.guard';
 import { TokenGuardSeller } from './guards/seller.guard';
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path : 'user/registration', component : UserRegistrationComponent},
   {path : 'client/registration', component : ClientRegistrationComponent},
   {path: 'cars', component: CarsViewComponent},
-  {path: 'car/:id', component: CarComponent}
+  {path: 'car/:id', component: CarComponent},
+  {path: 'car/list', component: CarListComponent},
 
   
   
