@@ -24,6 +24,8 @@ import { CarComponent } from './components/car/car.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { BuyComponent } from './components/buy/buy.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { PersonalReportsComponent } from './components/personal-reports/personal-reports.component';
+
 
 
 
@@ -42,7 +44,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     BuyComponent,
     AdminHomeComponent,
     CarListComponent,
-    BuyComponent
+    BuyComponent,
+    PersonalReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
