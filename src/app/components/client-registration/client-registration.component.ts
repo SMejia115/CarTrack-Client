@@ -24,9 +24,9 @@ export class ClientRegistrationComponent {
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
     this.clientForm = this.formBuilder.group({
       identificationNumber: ['', [Validators.required, Validators.maxLength(30), Validators.minLength(10), Validators.pattern('[0-9-]+')]],
-      firstName: ['', [Validators.required, Validators.maxLength(20)]],
-      secondName: ['', Validators.maxLength(20)],
-      lastName: ['', [Validators.required, Validators.maxLength(20)]],
+      firstName: ['', [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z]+')]],
+      secondName: ['', [Validators.maxLength(20),  Validators.pattern('[a-zA-Z]+')]],
+      lastName: ['', [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z]+')]],
       address: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.maxLength(15), Validators.pattern('[0-9-]+')]],
       boolReports: [false, Validators.required],

@@ -17,9 +17,6 @@ export class CombinedTokenGuard implements CanActivate {
     // Lógica para verificar si ambos TokenGuard y TokenGuardAdmin retornan falso
     const isTokenValid = this.tokenGuard.canActivate();
     const isAdminTokenValid = this.tokenGuardAdmin.canActivate();
-    console.log(isAdminTokenValid, isTokenValid);
-
-    console.log(!isTokenValid && !isAdminTokenValid);
 
 
     if (!isTokenValid && !isAdminTokenValid){

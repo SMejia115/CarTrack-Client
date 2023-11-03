@@ -74,7 +74,7 @@ export class BuyComponent {
       transitLicenseNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(17)]],
       soatDate: [''],
       tecnoDate: [''],
-      previousOwner: [''],
+      previousOwner: ['', [Validators.pattern('[0-9-]+')]],
       type: ['', Validators.required],
       status: [''],
     });
@@ -85,7 +85,7 @@ export class BuyComponent {
       'brand',
       'model',
       'year',
-      'color',
+      'color', 
       'fuelType',
       'chassisNumber',
       'engineNumber',
@@ -156,7 +156,6 @@ export class BuyComponent {
         'Content-Type': 'application/json' // Ajusta esto según el tipo de contenido que espera tu servidor
       });
       
-      console.log('Datos del auto:', this.carData);
 
 
       // Realiza una solicitud POST para guardar el auto con los datos actualizados
@@ -191,7 +190,6 @@ export class BuyComponent {
   
   getClientID() {
     // Realiza la solicitud HTTP para obtener el clientID
-    console.log('Obteniendo clientID...');
     return this.clientService.obtainClientIDbyIdentificationNumber(this.nuevoAutoForm.value.previousOwner);
   }
 

@@ -71,7 +71,6 @@ export class CarComponent implements OnInit{
   obtainCar(){
     this.http.get(`http://localhost:5000/car/images/${this.carID}`).subscribe(
       (response: any) => {
-        console.log('Cars obtained:', response);
         this.car = response.car;
         for (const image of response.carImages) {
           this.images.push(image.ImageURL); // Agregamos cada URL de imagen al array "images"
@@ -90,7 +89,6 @@ export class CarComponent implements OnInit{
       (response: any) => {
         this.clientInfo = response;
         this.clientID = response.clientID;
-        console.log('Información del cliente obtenida:', response.clientID); 
         this.clientNotFound = false;
       },
       (error: any) => {

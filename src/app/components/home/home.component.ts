@@ -18,7 +18,6 @@ export class HomeComponent {
   }
 
   getRole(): boolean {
-    console.log(this.tokenDesencripted().user.role);
     return this.tokenDesencripted().user.role === 'admin';
   }
 

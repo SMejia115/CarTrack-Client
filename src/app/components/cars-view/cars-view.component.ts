@@ -20,9 +20,7 @@ export class CarsViewComponent {
   obtainCars(){
     this.http.get('http://localhost:5000/available/cars/images').subscribe(
       (response: any) => {
-        console.log('Cars obtained:', response);
         this.cars = response;
-        console.log(this.cars);
       },
       (error: any) => {
         console.error('Error obtaining cars:', error);

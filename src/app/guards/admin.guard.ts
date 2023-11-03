@@ -17,7 +17,6 @@ export class TokenGuardAdmin implements CanActivate {
     const tokenDesencripted:any  = decodeToken(token)
 
     if (tokenDesencripted.user.role === 'admin') {
-      console.log(tokenDesencripted.role)
       return true;
     } else {
       this.router.navigate(['']);

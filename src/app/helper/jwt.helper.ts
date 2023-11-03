@@ -19,7 +19,6 @@ export const decodeToken = (token: string) => {
   }).join(''));
 
   // Parse the JSON string and return the resulting object
-  console.log(JSON.parse(jsonPayload));
   return JSON.parse(jsonPayload);
 };
 
